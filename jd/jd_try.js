@@ -105,7 +105,7 @@ const typeMap = {
 			await showMsg()
 		}
 	}
-    $.notify.sendNotify(`${$.name}`, notifyMsg);
+	await $.notify.sendNotify(`${$.name}`, notifyMsg);
 })()
 	.catch((e) => {
 		console.log(`❗️ ${$.name} 运行错误！\n${e}`)
@@ -291,7 +291,7 @@ async function getApplyStateByActivityIds() {
 			}
 			return true
 		}))
-		if ($.goodList.length >= 320) break
+		if ($.goodList.length >= 350) break
 	}
 }
 
@@ -448,9 +448,8 @@ async function showMsg() {
 		$.msg($.name, ``, message, {
 			"open-url": 'https://try.m.jd.com/user'
 		})
-		
-        if ($.isNode()) {      
-                notifyMsg += `${message}\n\n`;    }
+		if ($.isNode())
+			notifyMsg += `${message}\n\n`
 	} else {
 		console.log(message)
 	}
